@@ -10,7 +10,6 @@
 #define SYMBOLS 3
 #define NUMBERS 4
 #define FNUMBERS 5
-#define WARRANGE 6
 
 / {
 	behaviors {
@@ -46,17 +45,17 @@
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |GUI/GRAV|A/NAV |S/SEL | D/NUM|   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |RGUI/' "|
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | CAPS |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * |LShift (|   Z  |   X  |   C  |   V  |   B  | [ {  | CAPS |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? |RShift )|
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'	
  *                        |MISION| ShApp| DEL  | Space| TAB  |  | Bksp | ENTER|  ?   |   -  | RALT |
- *                        |WARRAN| LCTR |      |      |      |  |      |      | SYM  | RCTR |      |
+ *                        |  GUI | LCTR |      |      |      |  |      |      | SYM  | RCTR |      |
  *                        `----------------------------------'  `----------------------------------'
  */
 			bindings = <
      &hm LALT ESC    &kp Q   &kp W   &kp E        &kp R          &kp T                                              &kp Y       &kp U           &kp I     &kp O   &kp P     &hm LALT KP_PLUS
      &fmt LGUI GRAVE  &hm 1 A &hm 2 S &hm 4 D      &kp F          &kp G                                              &kp H       &kp J           &kp K     &kp L   &kp SEMI  &fmt RGUI SQT
      &fmt LSHIFT LPAR &kp Z   &kp X   &kp C        &kp V          &kp B   &kp LBKT &kp CAPS      &mo 5    &kp RBKT   &kp N       &kp M           &kp COMMA &kp DOT &kp SLASH &fmt RSHIFT RPAR
-                                      &hm 6 LC(UP) &mt LCTRL LC(DOWN) &kp DEL &kp SPACE &kp TAB      &kp BSPC &kp ENTER  &hm 3 QMARK &mt RCTRL MINUS &kp RALT
+                                      &hm LGUI LC(UP) &mt LCTRL LC(DOWN) &kp DEL &kp SPACE &kp TAB      &kp BSPC &kp ENTER  &hm 3 QMARK &mt RCTRL MINUS &kp RALT
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -193,30 +192,7 @@
 		};
 
 
-		warrange_layer {
-/*
- * Window Layer: Key shortcuts to manage rectangle
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  SLEEP |      |      |      |      |   ↑  |                              |      | CW<  |AWUP  | >CW  |      |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |      |      |   ↓  |                              |      | AW<  | ACW F| >AW  |      |        |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |  ←   |   →  |  |      |      |      | CWS< |AWDWN | >CWS |      |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |   X  |      |      |REOPEN|CLTAB |  | ACW< | ACW> |      | C<   | C>   |
- *                        |      |      |      | TAB  |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-			bindings = <
-      &kp LC(LS(LA(LG(F12)))) &trans &trans &trans &trans &kp UP                                                                         &trans &kp LC(LG(LEFT))     &kp LA(LG(UP))    &kp LC(LG(RIGHT))     &trans &trans 
-      &trans                  &trans &trans &trans &trans &kp DOWN                                                                       &trans &kp LA(LG(LEFT))     &kp LA(LC(LG(F))) &kp LA(LG(RIGHT))     &trans &trans 
-      &trans                  &trans &trans &trans &trans &trans   &kp LEFT      &kp RIGHT    &kp LC(LEFT)         &kp LC(RIGHT)         &trans &kp LS(LC(LG(LEFT))) &kp LA(LG(DOWN))  &kp LS(LC(LG(RIGHT))) &trans &trans 
-                                            &trans &trans &trans   &kp LG(LS(T)) &kp LG(W)    &kp LA(LC(LG(LEFT))) &kp LA(LC(LG(RIGHT))) &trans &kp LC(LEFT)         &kp LC(RIGHT) 
-			>;
-
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-		};
+		
 		
 	};
 };
